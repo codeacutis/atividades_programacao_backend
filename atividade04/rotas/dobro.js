@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     let responseText = '';
 
     if (queryParams.numero){
-        responseText = `O dobro de ${queryParams.numero} é ${queryParams.numero*2}`;
+        responseText = `O dobro de ${queryParams.numero} é ${parseInt(queryParams.numero, 10)*2}`;
     } else {
         responseText = `Por favor, coloque um número na requisição!`
     }
