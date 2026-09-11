@@ -13,11 +13,11 @@ module.exports = (req, res) => {
             res.writeHeader(200, {'Content-Type' : 'text/plain; charset=utf-8'});
 
             let textReturn = '';
-            if(dados.numero1 && dados.numero2){
-                textReturn = dados.numero1 + " + " + dados.numero2 + " = " + (parseInt(dados.numero1, 10) + parseInt(dados.numero2, 10));
+            if(dados.moeda === "USD"){
+                textReturn = `${parseFloat(dados.valor, 10).toFixed(2)} ${dados.moeda} equivalem a R$${parseFloat(dados.valor, 10).toFixed(2)*5}`;
                 res.end(textReturn);
             } else {
-                textReturn = `Por favor, digite os dois números para realizar a soma!`;
+                textReturn = `${parseFloat(dados.valor, 10).toFixed(2)} ${dados.moeda} equivalem a R$${parseFloat(dados.valor, 10).toFixed(2)*5.5}`;
                 res.end(textReturn);
             }
         });

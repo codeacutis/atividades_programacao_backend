@@ -1,16 +1,16 @@
-const fs = require('fs')
+const fs = require('fs');
+const path = require('path');
 
-function formReturn(res){
-    const filePath = path.join(__dirname, '../index.html')
+module.exports = (req, res) => {
+    const filePath = path.join(__dirname, '../index.html');
+
     fs.readFile(filePath, (err, file) => {
         if(err){
-            res.statusCode = 500;
-            res.setHeader('Content-Type', 'text/plain');
-            res.end('Erro interno do servidor');
-            return;
-        }
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/html');
+            res.writeHead(500, {"Content-Type" : "text/plain; charset=utf-8"});
+            res.end('Erro ao carregar formulário');
+        } else {
+        res.writeHead(200, {"Content-Type" : "text/html"});
+        res.end(file)
+    }
     });
-    res.sendFile(filePath);
 }

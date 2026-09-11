@@ -1,26 +1,32 @@
 const http = require('http');
 const port = 3000;
+const url = require('url');
 
-const formulario = require('./rotas/formulario.js');
+const conversor = require('./rotas/conversor.js');
 const dobro = require('./rotas/dobro.js')
 const saudacao = require('./rotas/saudacao.js')
-const soma = require('./rotas/soma.js')
+const soma = require('./rotas/soma.js');
+const formulario = require('./rotas/formulario.js');
 
 const requestHandler = (req, res) => {
   res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  const parsedUrl = url.parse(req.url, true);
   
-  switch(req.url) {
-    case '/':
-        formulario(res);
+  switch(parsedUrl.pathname) {
+    case "/":
+        formulario(req, res);
         break;
-    case '/dobro':
-        dobro(res);
+    case "/conversor":
+        conversor(req, res);
         break;
-    case '/saudacao':
-        saudacao(res);
+    case "/dobro":
+        dobro(req, res);
         break;
-    case '/soma':
-        soma(res);
+    case "/saudacao":
+        saudacao(req, res);
+        break;
+    case "/soma":
+        soma(req, res);
         break;
     default:
       res.statusCode = 404;
