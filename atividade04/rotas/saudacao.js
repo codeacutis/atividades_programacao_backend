@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     let responseText = '';
 
     if (queryParams.nome){
-        responseText = `Olá ${queryParams.nome}! Seja bem-vindo!`;
+        responseText = `Olá, ${queryParams.nome}! Seja bem-vindo!`;
     } else {
         responseText = `Por favor, coloque seu nome na requisição!`
     }
