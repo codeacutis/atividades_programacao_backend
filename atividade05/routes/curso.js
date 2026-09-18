@@ -9,6 +9,7 @@ const courseValidate = require('../middlewares/validateCurso.js');
 route.get('/', courseValidate, (req, res) => {
     const name = req.query.nome;
     const period = req.query.periodo;
+    res.status(200);
     res.send(`Curso: ${name}, Período: ${period}`);
 });
 
