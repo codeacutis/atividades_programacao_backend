@@ -13,13 +13,13 @@ router.get("/", buscaTodosClientes, (req, res) => {
 });
 
 router.get("/novo", (req, res) => {
-  res.render("cliente-produto");
+  res.render("novo-cliente");
 });
 
 router.post("/add", validaDadosCliente, async (req, res) => {
   const { nome, email } = req.body;
   try {
-    await pool.query("INSERT INTO cliente (nome, email) VALUES (?, ?)", [
+    await pool.query("INSERT INTO clientes (nome, email) VALUES (?, ?)", [
       nome,
       email,
     ]);
