@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Novo Endereço</title>
+  </head>
+  <body>
+    <h1>Cadastrar Novo Endereço</h1>
+    <form action="/enderecos/add" method="POST">
+      <p>Rua: <input type="text" name="rua" required /></p>
+      <p>Número: <input type="text" name="numero" /></p>
+      <p>Bairro: <input type="text" name="bairro" required /></p>
+      <p>Cidade: <input type="text" name="cidade" required /></p>
+      <p>Estado (UF): <input type="text" name="estado" maxlength="2" required /></p>
+      <p>CEP: <input type="text" name="cep" maxlength="9" placeholder="00000-000" required /></p>
+      <button type="submit">Salvar</button>
+    </form>
+    <a href="/enderecos">Voltar</a>
+  </body>
+</html>

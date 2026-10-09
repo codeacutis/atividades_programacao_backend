@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Editar Endereço</title>
+  </head>
+  <body>
+    <h1>Editar Endereço</h1>
+    <form action="/enderecos/editar/<%= endereco.id %>" method="POST">
+      <p>Rua: <input type="text" name="rua" value="<%= endereco.rua %>" required /></p>
+      <p>Número: <input type="text" name="numero" value="<%= endereco.numero || '' %>" /></p>
+      <p>Bairro: <input type="text" name="bairro" value="<%= endereco.bairro %>" required /></p>
+      <p>Cidade: <input type="text" name="cidade" value="<%= endereco.cidade %>" required /></p>
+      <p>Estado (UF): <input type="text" name="estado" value="<%= endereco.estado %>" maxlength="2" required /></p>
+      <p>CEP: <input type="text" name="cep" value="<%= endereco.cep %>" maxlength="9" required /></p>
+      <button type="submit">Atualizar</button>
+    </form>
+    <a href="/enderecos">Voltar</a>
+  </body>
+</html>
