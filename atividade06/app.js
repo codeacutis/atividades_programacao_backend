@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const methodOverride = require("method-override")
 const app = express();
 const port = 3000;
 
@@ -14,6 +15,9 @@ app.set("views", "./views");
 // Middlewares
 app.use(express.static("public")); // Serve arquivos da pasta 'public'
 app.use(express.urlencoded({ extended: true })); // Para ler dados de formulários
+
+// Utilização do method override para trabalhar dentro do EJS
+app.use(methodOverride("_method"));
 
 // Monta as rotas
 app.use("/produtos", produtosRoutes);

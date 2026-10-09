@@ -34,4 +34,35 @@ router.get("/detalhe/:id", buscaClientePorId, (req, res) => {
   res.render("detalhe-cliente");
 });
 
+router.put("/editar/:id", validaDadosCliente, async (req, res) => {
+  const { nome, email } = req.body;
+  const { id } = req.params;
+  try {
+    await pool.query("UPDATE clientes SET nome = ?, email = ? WHERE id = ?", [
+      nome,
+      email,
+      id,
+    ]);
+    res.redirect("/clientes");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erro ao atualizar clientes.");
+  }
+});
+
+router.get("/editar/:id", buscaClientePorId, (req, res) => {
+  res.render("editar-cliente");
+});
+
+router.delete("/deletar/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await pool.query("DELETE FROM clientes WHERE id = ?", [id]);
+    res.redirect("/clientes");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erro ao deletar cliente.");
+  }
+});
+
 module.exports = router;

@@ -12,6 +12,13 @@
       <strong>Email:</strong> <%= cliente.email %>
     </p>
     <br />
+    <br>
+    <a href="/clientes/editar/<%= cliente.id %>">Editar</a>
+    <form method="POST" action="/clientes/deletar/<%= cliente.id %>?_method=DELETE" style="display:inline">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit">Deletar</button>
+    </form>
+    <br />
     <a href="/clientes">Voltar para a lista</a>
   </body>
 </html>
